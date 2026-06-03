@@ -27,7 +27,48 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // El manejo del formulario ahora lo hace Brevo automáticamente.
+    // Form submission handling to Brevo via AJAX
+    const leadForm = document.getElementById('leadForm');
+    const formSuccess = document.getElementById('formSuccess');
+    
+    if (leadForm) {
+        leadForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // Evita que el navegador vaya a la página en blanco
+            
+            const btn = leadForm.querySelector('button[type="submit"]');
+            const originalText = btn.innerText;
+            btn.innerText = 'Enviando...';
+            btn.disabled = true;
+            
+            // Recolectar datos del formulario
+            const formData = new FormData(leadForm);
+            
+            // Enviar a Brevo en segundo plano
+            fetch(leadForm.action, {
+                method: 'POST',
+                body: formData,
+                mode: 'no-cors' // Evita errores de CORS al cruzar dominios
+            }).then(() => {
+                // Mostrar mensaje de éxito
+                formSuccess.classList.remove('hidden');
+                
+                // Resetear el formulario
+                leadForm.reset();
+                btn.innerText = originalText;
+                btn.disabled = false;
+                
+                // Ocultar mensaje después de 8 segundos
+                setTimeout(() => {
+                    formSuccess.classList.add('hidden');
+                }, 8000);
+            }).catch(error => {
+                console.error('Error enviando formulario:', error);
+                btn.innerText = originalText;
+                btn.disabled = false;
+                alert('Hubo un error de conexión, por favor intenta nuevamente.');
+            });
+        });
+    }
 
     // Simple scroll animation for cards and elements
     const observerOptions = {
