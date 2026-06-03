@@ -27,44 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Form submission handling
-    const leadForm = document.getElementById('leadForm');
-    const formSuccess = document.getElementById('formSuccess');
-    
-    if (leadForm) {
-        leadForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            // In a real app, you would send this data to a backend or CRM
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const profession = document.getElementById('profession').value;
-            const status = document.getElementById('status').value;
-            
-            console.log('Form submitted:', { name, email, profession, status });
-            
-            // Simulate API call
-            const btn = leadForm.querySelector('button[type="submit"]');
-            const originalText = btn.innerText;
-            btn.innerText = 'Enviando...';
-            btn.disabled = true;
-            
-            setTimeout(() => {
-                // Show success message
-                formSuccess.classList.remove('hidden');
-                
-                // Reset form
-                leadForm.reset();
-                btn.innerText = originalText;
-                btn.disabled = false;
-                
-                // Hide success message after 5 seconds
-                setTimeout(() => {
-                    formSuccess.classList.add('hidden');
-                }, 5000);
-            }, 1500);
-        });
-    }
+    // El manejo del formulario ahora lo hace Brevo automáticamente.
 
     // Simple scroll animation for cards and elements
     const observerOptions = {

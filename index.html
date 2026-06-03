@@ -203,13 +203,16 @@
                 <p>Son empleos reales, en empresas que operan hoy en Chile, con sueldos mejores que el hospital y sin turnos de noche. Déjame tu correo y te lo mando ahora.</p>
             </div>
             <div class="lead-form-wrapper">
-                <form id="leadForm" class="lead-form">
+                <form id="leadForm" class="lead-form" method="POST" action="https://e08a8bb9.sibforms.com/serve/MUIFAFYVofq9sjYY7sz-kTquSRPvCpEdR1N-dbWg4gyww5zamV8dlBGAy_Oq6Q6fw1SSEuGBSInBuZfsF8RVlCN-ROU3ezPtqN4EsBTLR8tpYGxJrUbAxYrerCEKR1tVZ3jlj1dO7pkOE1y-U2jgW1almk8rZ-trTyMmlOfj3Xo81p-UhR1GN-xqJRcupSLaEFspgc5QFSZMvqOPCA==">
                     <div class="form-group">
-                        <input type="text" id="name" placeholder="¿Cómo te llamas?" required>
+                        <input type="text" id="name" name="NOMBRE" placeholder="¿Cómo te llamas?" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" id="email" placeholder="Tu correo electrónico" required>
+                        <input type="email" id="email" name="EMAIL" placeholder="Tu correo electrónico" required>
                     </div>
+                    <!-- Campos ocultos requeridos por Brevo -->
+                    <input type="text" name="email_address_check" value="" style="display:none;">
+                    <input type="hidden" name="locale" value="es">
                     <div class="form-group">
                         <select id="profession" required>
                             <option value="" disabled selected>¿Cuál es tu profesión?</option>
