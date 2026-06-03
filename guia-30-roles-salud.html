@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>22 Empleos en Salud fuera del Hospital — Samir Zará</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #10b981;
+    --blue: #06b6d4;
+    --orange: #f97316;
+    --dark: #0a0f1c;
+    --muted: #6b7280;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: #f9fafb; color: #1f2937; line-height: 1.7; font-size: 15px; }
+
+  /* COVER */
+  .cover {
+    background: linear-gradient(135deg, var(--dark) 0%, #0d2235 50%, #0a1a2e 100%);
+    color: white; min-height: 100vh; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center;
+    padding: 60px 40px; position: relative; overflow: hidden;
+  }
+  .cover::before { content: ''; position: absolute; top: -100px; right: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(16,185,129,0.15), transparent 70%); border-radius: 50%; }
+  .cover::after { content: ''; position: absolute; bottom: -100px; left: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(6,182,212,0.15), transparent 70%); border-radius: 50%; }
+  .cover-badge { background: rgba(16,185,129,0.2); border: 1px solid var(--teal); color: var(--teal); padding: 6px 20px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 30px; position: relative; z-index: 1; }
+  .cover h1 { font-family: 'Outfit', sans-serif; font-size: 3.2rem; font-weight: 800; line-height: 1.15; margin-bottom: 20px; position: relative; z-index: 1; }
+  .cover h1 span { background: linear-gradient(to right, var(--blue), var(--teal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .cover-subtitle { font-size: 1.1rem; color: rgba(255,255,255,0.7); max-width: 620px; margin: 0 auto 40px; position: relative; z-index: 1; }
+  .cover-stats { display: flex; gap: 40px; margin: 40px 0; position: relative; z-index: 1; }
+  .cstat { text-align: center; }
+  .cstat-num { font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 800; color: var(--teal); }
+  .cstat-label { font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-top: 2px; }
+  .cover-author { display: flex; flex-direction: column; align-items: center; gap: 8px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; position: relative; z-index: 1; }
+  .cover-author h3 { font-family: 'Outfit', sans-serif; font-size: 1.3rem; color: white; }
+  .cover-author p { color: var(--teal); font-size: 0.9rem; }
+
+  /* CONTENT */
+  .page { max-width: 800px; margin: 0 auto; padding: 60px 40px; }
+  .intro-box { background: linear-gradient(135deg, var(--dark), #0d2235); color: white; border-radius: 16px; padding: 40px; margin-bottom: 50px; }
+  .intro-box h2 { font-family: 'Outfit', sans-serif; font-size: 1.8rem; margin-bottom: 15px; color: var(--teal); }
+  .intro-box p { color: rgba(255,255,255,0.8); margin-bottom: 10px; font-size: 0.95rem; }
+
+  /* CATEGORY */
+  .category-header { background: linear-gradient(135deg, var(--dark), #0d2235); color: white; border-radius: 12px; padding: 25px 30px; margin: 50px 0 30px; display: flex; align-items: center; gap: 15px; }
+  .category-icon { font-size: 2.2rem; }
+  .category-header h2 { font-family: 'Outfit', sans-serif; font-size: 1.5rem; color: white; }
+  .category-header p { font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-top: 4px; }
+
+  /* ROLE CARDS */
+  .role-card { background: white; border-radius: 12px; padding: 28px; margin-bottom: 20px; border: 1px solid #e5e7eb; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: transform 0.2s; }
+  .role-card:hover { transform: translateY(-2px); }
+  .role-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; gap: 15px; }
+  .role-number { background: linear-gradient(135deg, var(--teal), var(--blue)); color: white; width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; flex-shrink: 0; }
+  .role-title-block { flex: 1; }
+  .role-title { font-family: 'Outfit', sans-serif; font-size: 1.15rem; font-weight: 700; color: #111827; margin-bottom: 3px; }
+  .role-subtitle { font-size: 0.8rem; color: var(--muted); }
+  .role-salary { background: linear-gradient(135deg, rgba(16,185,129,0.1), rgba(6,182,212,0.1)); border: 1px solid rgba(16,185,129,0.3); border-radius: 8px; padding: 8px 14px; text-align: right; flex-shrink: 0; }
+  .salary-label { font-size: 0.7rem; color: var(--muted); display: block; }
+  .salary-amount { font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 700; color: var(--teal); white-space: nowrap; }
+  .role-desc { font-size: 0.9rem; color: #374151; margin-bottom: 14px; line-height: 1.7; }
+  .role-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+  .tag { background: #f3f4f6; color: #374151; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 500; }
+  .tag.orange { background: rgba(249,115,22,0.1); color: var(--orange); }
+  .role-key { background: #f9fafb; border-left: 3px solid var(--teal); padding: 10px 15px; border-radius: 0 8px 8px 0; font-size: 0.85rem; color: #374151; }
+  .role-key strong { color: var(--dark); }
+
+  /* TIPS & CTA */
+  .tips-box { background: linear-gradient(135deg, rgba(249,115,22,0.08), rgba(249,115,22,0.03)); border: 1px solid rgba(249,115,22,0.3); border-radius: 12px; padding: 30px; margin: 50px 0; }
+  .tips-box h3 { font-family: 'Outfit', sans-serif; color: var(--orange); margin-bottom: 15px; font-size: 1.2rem; }
+  .tip-item { display: flex; gap: 12px; margin-bottom: 12px; font-size: 0.9rem; color: #374151; }
+  .tip-num { background: var(--orange); color: white; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+  .cta-box { background: linear-gradient(135deg, var(--dark), #0d2235); color: white; border-radius: 16px; padding: 50px 40px; text-align: center; margin-top: 60px; }
+  .cta-box h2 { font-family: 'Outfit', sans-serif; font-size: 2rem; margin-bottom: 15px; line-height: 1.3; }
+  .cta-box h2 span { background: linear-gradient(to right, var(--blue), var(--teal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .cta-box p { color: rgba(255,255,255,0.75); font-size: 0.95rem; max-width: 500px; margin: 0 auto 30px; }
+  .cta-button { display: inline-block; background: linear-gradient(135deg, var(--orange), #ea580c); color: white; text-decoration: none; padding: 16px 40px; border-radius: 10px; font-weight: 700; font-size: 1rem; box-shadow: 0 4px 20px rgba(249,115,22,0.4); }
+  .cta-contact { margin-top: 20px; font-size: 0.85rem; color: rgba(255,255,255,0.5); }
+  .cta-contact span { color: var(--teal); }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-badge">Guía Gratuita 2026 · Chile</div>
+  <h1>22 Empleos en Salud<br>que <span>Probablemente No Conocías</span></h1>
+  <p class="cover-subtitle">Empleos reales, publicados hoy en Chile, en empresas que pagan el doble que el hospital y donde no hay turnos de noche. Con tu mismo título de salud.</p>
+  <div class="cover-stats">
+    <div class="cstat"><div class="cstat-num">22</div><div class="cstat-label">Empleos detallados</div></div>
+    <div class="cstat"><div class="cstat-num">6</div><div class="cstat-label">Sectores</div></div>
+    <div class="cstat"><div class="cstat-num">2–3x</div><div class="cstat-label">El sueldo del hospital</div></div>
+  </div>
+  <div class="cover-author">
+    <h3>Samir Zará</h3>
+    <p>Matrón · Coach de Empleabilidad en Salud · 17 años en clínica, farma y pagadores</p>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="page">
+
+  <div class="intro-box">
+    <h2>Antes de que empieces a leer…</h2>
+    <p>Soy Samir Zará. Soy matrón, llevo 17 años trabajando en salud en Chile y he pasado por los tres mundos: la clínica, un laboratorio farmacéutico y una isapre.</p>
+    <p>Lo que aprendí en ese camino es que la mayoría de los profesionales de salud en Chile no saben que existen estos empleos. No porque no existan — están publicados ahora mismo en LinkedIn y en portales de empleo — sino porque nadie te lo enseñó en la universidad.</p>
+    <p>Esta guía te muestra 22 de esos empleos. Léela, identifica 1 o 2 que te hagan sentido, y empieza a moverte. No necesitas hacer todo de una vez.</p>
+  </div>
+
+  <!-- ======================== -->
+  <!-- CATEGORÍA 1: FARMA -->
+  <!-- ======================== -->
+  <div class="category-header">
+    <div class="category-icon">💊</div>
+    <div>
+      <h2>Laboratorios Farmacéuticos</h2>
+      <p>Pfizer, Roche, Novartis, Sanofi, Bayer, Abbott, MSD y AstraZeneca tienen oficinas en Chile y publican empleos constantemente en LinkedIn y sus propios portales de empleo.</p>
+    </div>
+  </div>
+
+  <div class="role-card">
+    <div class="role-header">
+      <div class="role-number">1</div>
+      <div class="role-title-block">
+        <div class="role-title">Medical Science Liaison (MSL)</div>
+        <div class="role-subtitle">También publicado como: Enlace Médico Científico</div>
+      </div>
+      <div class="role-salary">
+        <span class="salary-label">Sueldo referencial</span>
+        <span class="salary-amount">$2.5M–$4M CLP</span>
+      </div>
+    </div>
+    <p class="role-desc">Visita a médicos especialistas y líderes de opinión clínica para compartir información científica sobre los medicamentos del laboratorio. No es un vendedor: su rol es educativo y científico. Trabaja sin supervisión directa, maneja su propia agenda y generalmente tiene auto de empresa. Es el empleo más buscado por profesionales de salud que quieren salir de la clínica.</p>
+    <div class="role-tags">
+      <span class="tag">Sin turnos</span>
+      <span class="tag">Auto de empresa</span>
+      <span class="tag">Alta autonomía</span>
+      <span class="tag orange">Muy solicitado en LinkedIn Chile</span>
+    </div>
+    <div class="role-key"><strong>¿Quién puede postular?</strong> Matrón/a, Enfermero/a, Médico, Químico Farmacéutico. Si tienes experiencia clínica en oncología, cardiología, infectología o ginecología, tienes ventaja real sobre otros candidatos.</div>
+  </div>
+
+  <div class="role-card">
+    <div class="role-header">
+      <div class="role-number">2</div>
+      <div class="role-title-block">
+        <div class="role-title">Delegado/a de Ventas Farmacéuticas</div>
+        <div class="role-subtitle">También publicado como: Visitador Médico, Representante Farmacéutico</div>
+      </div>
+      <div class="role-salary">
+        <span class="salary-label">Sueldo referencial</span>
+        <span class="salary-amount">$1.2M–$2.2M CLP</span>
+      </div>
+    </div>
+    <p class="role-desc">Visita médicos y farmacias para promover medicamentos de un laboratorio. Incluye bonos de venta que pueden duplicar el sueldo base. Auto de empresa, celular, y gastos de representación cubiertos. Es la puerta de entrada más común y rápida a la industria farmacéutica en Chile. En LinkedIn Chile aparecen decenas de vacantes al mes en Trabajando.com y Bumeran.</p>
+    <div class="role-tags">
+      <span class="tag">Auto de empresa</span>
+      <span class="tag">Bonos de venta</span>
+      <span class="tag">Sin turnos</span>
+      <span class="tag orange">Alta oferta en Chile</span>
+    </div>
+    <div class="role-key"><strong>¿Quién puede postular?</strong> Todos los profesionales de salud. Tu credibilidad clínica frente a médicos es tu mayor ventaja sobre candidatos sin formación sanitaria.</div>
+  </div>
+
+  <div class="role-card">
+    <div class="role-header">
+      <div class="role-number">3</div>
+      <div class="role-title-block">
+        <div class="role-title">Analista de Farmacovigilancia</div>
+        <div class="role-subtitle">También publicado como: Analista de Seguridad de Medicamentos, Drug Safety Associate</div>
+      </div>
+      <div class="role-salary">
+        <span class="salary-label">Sueldo referencial</span>
+        <span class="salary-amount">$1.5M–$2.5M CLP</span>
+      </div>
+    </div>
+    <p class="role-desc">Recibe, evalúa y reporta reacciones adversas de medicamentos al ISP (Instituto de Salud Pública de Chile) y a los equipos internacionales del laboratorio. Trabajo 100% de oficina, sin contacto con pacientes. Muchos laboratorios ofrecen modalidad híbrida o remota. Es un cargo que aparece constantemente en los portales de empleo chilenos.</p>
+    <div class="role-tags">
+      <span class="tag">Lunes a viernes</span>
+      <span class="tag">Híbrido posible</span>
+      <span class="tag">Sin turnos</span>
+      <span class="tag orange">Alta demanda</span>
+    </div>
+    <div class="role-key"><strong>¿Quién puede postular?</strong> Enfermero/a, Matrón/a, Médico, Químico Farmacéutico. Tu experiencia clínica detectando reacciones adversas en pacientes es directamente aplicable desde el primer día.</div>
+  </div>
+
+  <div class="role-card">
+    <div class="role-header">
+      <div class="role-number">4</div>
+      <div class="role-title-block">
+        <div class="role-title">Product Manager / Brand Manager Farmacéutico</div>
+        <div class="role-subtitle">También publicado como: Gerente de Producto, Jefe de Producto</div>
+      </div>
+      <div class="role-salary">
+        <span class="salary-label">Sueldo referencial</span>
+        <span class="salary-amount">$2M–$3.5M CLP</span>
+      </div>
+    </div>
+    <p class="role-desc">Gestiona el desempeño comercial y de marketing de uno o varios medicamentos en Chile. Define la estrategia, los mensajes para médicos, las campañas y los materiales de visita médica. Combina el conocimiento clínico con visión de negocios. Es un cargo de alta responsabilidad con muy buenos beneficios.</p>
+    <div class="role-tags">
+      <span class="tag">Marketing</span>
+      <span class="tag">Estrategia</span>
+      <span class="tag">Liderazgo</span>
+    </div>
+    <div class="role-key"><strong>¿Quién puede postular?</strong> Profesional de salud con experiencia en visita médica o MSL. Los laboratorios suelen preferir candidatos con formación clínica en el área terapéutica del producto (ej: matrón/a para productos ginecológicos).</div>
+  </div>
+
+  <div class="role-card">
+    <div class="role-header">
+      <div class="role-number">5</div>
+      <div class="role-title-block">
+        <div class="role-title">Especialista Clínico en Dispositivos Médicos</div>
+        <div class="role-subtitle">También publicado como: Clinical Specialist, Soporte Clínico Técnico</div>
+      </div>
+      <div class="role-salary">
+        <span class="salary-label">Sueldo referencial</span>
+        <span class="salary-amount">$1.8M–$3.5M CLP</span>
+      </div>
+    </div>
+    <p class="role-desc">Da apoyo clínico y técnico a cirujanos y equipos médicos que utilizan dispositivos de empresas como Medtronic, Johnson &amp; Johnson, Boston Scientific o B. Braun — todas con presencia en Chile. En algunos casos puede acompañar cirugías para asegurar el correcto uso del dispositivo. Auto de empresa, formación internacional paga y excelentes beneficios.</p>
+    <div class="role-tags">
+      <span class="tag">Auto de empresa</span>
+      <span class="tag">Capacitación internacional</span>
+      <span class="tag orange">Muy bien pagado</span>
+    </div>
+    <div class="role-key"><strong>¿Quién puede postular?</strong> Enfermero/a de pabellón, Matrón/a con experiencia quirúrgica, Kinesiólogo/a. Tu conocimiento del ambiente de pabellón es el diferenciador clave frente a otros candidatos.</div>
+  </div>
+
+  <!-- ======================== -->
+  <!-- CATEGORÍA 2: ISAPRES -->
+  <!-- ======================== -->
+  <div class="category-header">
+    <div class="category-icon">🛡️</div>
+    <div>
+      <h2>Isapres, Seguros y Salud Corporativa</h2>
+      <p>Banmédica, Colmena Golden Cross, Cruz Blanca, Consalud, Esencial, Nueva Más Vida, BUPA y aseguradoras como MAPFRE publican empleos regularmente para profesionales de salud en roles no clínicos.</p>
+    </div>
+  </div>
+
+  <div class="role-card">
+    <div class="role-header">
+      <div class="role-number">6</div>
+      <div class="role-title-block">
+        <div class="role-title">Auditor/a de Cuentas Médicas</div>
+        <div class="role-subtitle">También publicado como: Auditor Clínico, Revisor de Prestaciones Médicas</div>
+      </div>
+      <div class="role-salary">
+        <span class="salary-label">Sueldo referencial</span>
+        <span class="salary-amount">$1.5M–$2.8M CLP</span>
+      </div>
+    </div>
+    <p class="role-desc">Revisa y valida las cuentas médicas que los hospitales y clínicas envían a la isapre para cobrar. Verifica que las prestaciones facturadas correspondan al diagnóstico y al tratamiento. Todo de lunes a viernes, sin turnos de noche ni fines de semana. Es uno de los cargos más publicados en Trabajando.cl y Laborum para profesionales de enfermería y matronería.</p>
+    <div class="role-tags">
+      <span class="tag">Lunes a viernes</span>
+      <span class="tag">Sin turnos</span>
+      <span class="tag">Híbrido posible</span>
+      <span class="tag orange">Muy solicitado en Chile</span>
+    </div>
+    <div class="role-key"><strong>¿Quién puede postular?</strong> Enfermero/a, Matrón/a, Médico. Tu experiencia leyendo fichas clínicas y conociendo diagnósticos y procedimientos es exactamente lo que necesita este cargo.</div>
+  </div>
+
+  <div class="role-card">
+    <div class="role-header">
+      <div class="role-number">7</div>
+      <div class="role-title-block">
+        <div class="role-title">Gestor/a de Casos GES y CAEC</div>
+        <div class="role-subtitle">También publicado como: Gestora de Casos, Coordinadora de Beneficios GES</div>
+      </div>
+      <div class="role-salary">
+        <span class="salary-label">Sueldo referencial</span>
+        <span class="salary-amount">$1.3M–$2.2M CLP</span>
+      </div>
+    </div>
+    <p class="role-desc">Acompaña y coordina a pacientes con enfermedades GES (Garantías Explícitas en Salud) o CAEC (Cobertura Adicional para Enfermedades Catastróficas) para que accedan a sus beneficios. Es un cargo con mucho sentido humano: ayudas a personas en momentos difíciles a navegar el sistema de salud chileno. Muy publicado en isapres y aseguradoras.</p>
+    <div class="role-tags">
+      <span class="tag">Lunes a viernes</span>
+      <span class="tag">Atención telefónica</span>
+      <span class="tag">Alto impacto social</span>
+    </div>
+    <div class="role-key"><strong>¿Quién puede postular?</strong> Enfermero/a, Matrón/a. Conocer las patologías GES y el lenguaje del sistema público chileno es tu gran ventaja.</div>
+  </div>
+
+  <div class="role-card">
+    <div class="role-header">
+      <div class="role-number">8</div>
+      <div class="role-title-block">
+        <div class="role-title">Analista de Riesgo en Salud</div>
+        <div class="role-subtitle">También publicado como: Analista de Siniestros, Evaluador de Riesgo Médico</div>
+      </div>
+      <div class="role-salary">
+        <span class="salary-label">Sueldo referencial</span>
+        <span class="salary-amount">$1.4M–$2.4M CLP</span>
+      </div>
+    </div>
+    <p class="role-desc">Evalúa los antecedentes de salud de personas que quieren afiliarse a una isapre o contratar un seguro complementario. Analiza sus diagnósticos previos, licencias médicas y tratamientos para determinar coberturas y exclusiones. Trabajo 100% de escritorio, sin atención directa de pacientes.</p>
+    <div class="role-tags">
+      <span class="tag">Sin pacientes</span>
+      <span class="tag">Análisis documental</span>
+      <span class="tag">Lunes a viernes</span>
+    </div>
+    <div class="role-key"><strong>¿Quién puede postular?</strong> Médico, Enfermero/a, Matrón/a. Tu capacidad de leer e interpretar diagnósticos e historial clínico es la habilidad central de este cargo.</div>
+  </div>
+
+  <div class="role-card">
+    <div class="role-header">
+      <div class="role-number">9</div>
+      <div class="role-title-block">
+        <div class="role-title">Profesional de Salud en Telemedicina</div>
+        <div class="role-subtitle">También publicado como: Enfermero/a Telemedicina, Matrona Teleconsulta</div>
+      </div>
+      <div class="role-salary">
+        <span class="salary-label">Sueldo referencial</span>
+        <span class="salary-amount">$900K–$1.8M CLP</span>
+      </div>
+    </div>
+    <p class="role-desc">Atiende a pacientes de forma remota a través de plataformas de videollamada integradas a isapres, mutuales y empresas de salud corporativa. Empresas como Rescate Clínica Digital, Vittal, Salud Digital y plataformas de isapres contratan permanentemente. Modalidad 100% desde casa con horarios flexibles y posibilidad de part-time compatible con otro trabajo.</p>
+    <div class="role-tags">
+      <span class="tag">100% Remoto</span>
+      <span class="tag">Horario flexible</span>
+      <span class="tag">Part-time posible</span>
+      <span class="tag orange">En expansión en Chile</span>
+    </div>
+    <div class="role-key"><strong>¿Quién puede postular?</strong> Enfermero/a, Matrón/a, Médico, Kinesiólogo/a, Psicólogo/a. Compatible con trabajo clínico paralelo mientras haces la transición.</div>
+  </div>
+
+  <div class="role-card">
+    <div class="role-header">
+      <div class="role-number">10</div>
+      <div class="role-title-block">
+        <div class="role-title">Profesional de Salud Ocupacional / Bienestar Laboral</div>
+        <div class="role-subtitle">También publicado como: Enfermero/a del Trabajo, Prevencionista Clínico, Health &amp; Wellness</div>
+      </div>
+      <div class="role-salary">
+        <span class="salary-label">Sueldo referencial</span>
+        <span class="salary-amount">$1.3M–$2.5M CLP</span>
+      </div>
+    </div>
+    <p class="role-desc">Gestiona la salud de los trabajadores de una empresa grande: controla licencias médicas, diseña programas de salud preventiva, coordina exámenes ocupacionales y atiende urgencias menores. Las mineras, empresas de retail y grupos industriales en Chile contratan permanentemente este perfil. Mutualidades como ACHS, IST y Mutual de Seguridad también publican este cargo.</p>
+    <div class="role-tags">
+      <span class="tag">Empresas grandes</span>
+      <span class="tag">Sin urgencias nocturnas</span>
+      <span class="tag">Beneficios corporativos</span>
+      <span class="tag orange">Alta demanda en minería</span>
+    </div>
+    <div class="role-key"><strong>¿Quién puede postular?</strong> Enfermero/a, Matrón/a, Kinesiólogo/a. Un diplomado en Salud Ocupacional potencia mucho el perfil y se consigue en menos de 6 meses.</div>
+  </div>
+
+  <!-- ======================== -->
+  <!-- CATEGORÍA 3: INVESTIGACIÓN CLÍNICA -->
+  <!-- ======================== -->
+  <div class="category-header">
+    <div class="category-icon">🔬</div>
+    <div>
+      <h2>Investigación Clínica</h2>
+      <p>Chile tiene más estudios clínicos por habitante que cualquier otro país de América Latina. CROs internacionales como ICON, Syneos Health, Parexel, PPD e IQVIA tienen equipos locales y publican empleos regularmente.</p>
+    </div>
+  </div>
+
+  <div class="role-card">
+    <div class="role-header">
+      <div class="role-number">11</div>
+      <div class="role-title-block">
+        <div class="role-title">Coordinador/a de Estudios Clínicos</div>
+        <div class="role-subtitle">También publicado como: CRC (Clinical Research Coordinator), Coordinador de Ensayos Clínicos</div>
+      </div>
+      <div class="role-salary">
+        <span class="salary-label">Sueldo referencial</span>
+        <span class="salary-amount">$1.2M–$2.2M CLP</span>
+      </div>
+    </div>
+    <p class="role-desc">Gestiona el día a día de un estudio clínico dentro de un hospital o centro de investigación: recluta pacientes, agenda visitas, completa los formularios del estudio y coordina con el equipo médico. Es el punto de entrada más accesible para profesionales de salud que quieren entrar al mundo de la investigación clínica en Chile.</p>
+    <div class="role-tags">
+      <span class="tag">Horario diurno</span>
+      <span class="tag">Sin turnos</span>
+      <span class="tag">Laboratorios internacionales</span>
+      <span class="tag orange">Puerta de entrada</span>
+    </div>
+    <div class="role-key"><strong>¿Quién puede postular?</strong> Enfermero/a, Matrón/a, Tecnólogo/a Médico. El primer paso es completar el curso gratuito de GCP (Buenas Prácticas Clínicas) disponible en el sitio de TransCelerate o FDA.</div>
+  </div>
+
+  <div class="role-card">
+    <div class="role-header">
+      <div class="role-number">12</div>
+      <div class="role-title-block">
+        <div class="role-title">Monitor de Estudios Clínicos (CRA)</div>
+        <div class="role-subtitle">También publicado como: Clinical Research Associate, Monitor Clínico</div>
+      </div>
+      <div class="role-salary">
+        <span class="salary-label">Sueldo referencial</span>
+        <span class="salary-amount">$2M–$3.5M CLP</span>
+      </div>
+    </div>
+    <p class="role-desc">Visita los centros hospitalarios que participan en estudios clínicos para verificar que el protocolo se cumpla correctamente y los datos sean confiables. Trabaja para CROs internacionales como IQVIA, Parexel o ICON. Incluye viajes pagados dentro de Chile, auto o viáticos, y muchas veces posibilidad de trabajo remoto entre visitas.</p>
+    <div class="role-tags">
+      <span class="tag">Viajes incluidos</span>
+      <span class="tag">CROs internacionales</span>
+      <span class="tag">Trabajo remoto parcial</span>
+      <span class="tag orange">Muy bien pagado</span>
+    </div>
+    <div class="role-key"><strong>¿Quién puede postular?</strong> Enfermero/a, Matrón/a, TM con al menos 1 año de experiencia como Coordinador/a de Estudios Clínicos (CRC). Inglés básico es valorado.</div>
+  </div>
+
+  <div class="role-card">
+    <div class="role-header">
+      <div class="role-number">13</div>
+      <div class="role-title-block">
+        <div class="role-title">Analista de Datos Clínicos</div>
+        <div class="role-subtitle">También publicado como: Data Manager, Clinical Data Associate</div>
+      </div>
+      <div class="role-salary">
+        <span class="salary-label">Sueldo referencial</span>
+        <span class="salary-amount">$1.5M–$2.8M CLP</span>
+      </div>
+    </div>
+    <p class="role-desc">Administra y verifica las bases de datos de estudios clínicos. Asegura que los datos ingresados por los coordinadores sean completos, correctos y cumplan los estándares del estudio. En muchas CROs internacionales este cargo es 100% remoto, lo que permite trabajar para empresas de EE.UU. o Europa desde Chile.</p>
+    <div class="role-tags">
+      <span class="tag">100% Remoto posible</span>
+      <span class="tag">Excel avanzado</span>
+      <span class="tag">Empresas internacionales</span>
+    </div>
+    <div class="role-key"><strong>¿Quién puede postular?</strong> Profesional de salud con manejo de Excel o bases de datos. No se requiere programación. Un curso de Clinical Data Management (varios gratuitos en Coursera) abre la puerta.</div>
+  </div>
+
+  <!-- ======================== -->
+  <!-- CATEGORÍA 4: REGULATORIO Y CALIDAD -->
+  <!-- ======================== -->
+  <div class="category-header">
+    <div class="category-icon">📋</div>
+    <div>
+      <h2>Asuntos Regulatorios y Calidad</h2>
+      <p>El ISP (Instituto de Salud Pública), la Superintendencia de Salud y las empresas importadoras de medicamentos y dispositivos médicos requieren profesionales con formación clínica para cumplir con la normativa chilena y regional.</p>
+    </div>
+  </div>
+
+  <div class="role-card">
+    <div class="role-header">
+      <div class="role-number">14</div>
+      <div class="role-title-block">
+        <div class="role-title">Analista de Asuntos Regulatorios</div>
+        <div class="role-subtitle">También publicado como: Especialista Regulatorio, Regulatory Affairs Associate</div>
+      </div>
+      <div class="role-salary">
+        <span class="salary-label">Sueldo referencial</span>
+        <span class="salary-amount">$1.5M–$2.8M CLP</span>
+      </div>
+    </div>
+    <p class="role-desc">Gestiona el registro sanitario de medicamentos y dispositivos médicos ante el ISP. Prepara y presenta la documentación técnica, hace seguimiento de los trámites y responde a las consultas del regulador. Es un cargo de alta estabilidad laboral porque la normativa siempre cambia y hay trabajo permanente. Principalmente Químicos Farmacéuticos, pero también otros profesionales de salud con formación complementaria.</p>
+    <div class="role-tags">
+      <span class="tag">ISP Chile</span>
+      <span class="tag">Alta estabilidad</span>
+      <span class="tag">Sin turnos</span>
+    </div>
+    <div class="role-key"><strong>¿Quién puede postular?</strong> Principalmente Químico Farmacéutico. Otros profesionales de salud pueden ingresar con un diplomado en Asuntos Regulatorios (disponible en varias universidades chilenas).</div>
+  </div>
+
+  <div class="role-card">
+    <div class="role-header">
+      <div class="role-number">15</div>
+      <div class="role-title-block">
+        <div class="role-title">Analista de Acreditación y Gestión de Calidad</div>
+        <div class="role-subtitle">También publicado como: Profesional de Calidad, Coordinador de Acreditación</div>
+      </div>
+      <div class="role-salary">
+        <span class="salary-label">Sueldo referencial</span>
+        <span class="salary-amount">$1.4M–$2.5M CLP</span>
+      </div>
+    </div>
+    <p class="role-desc">Trabaja dentro de clínicas, hospitales privados o empresas de salud para mantener y mejorar la calidad de los procesos clínicos. Prepara a la institución para procesos de acreditación MINSAL, revisa protocolos y genera planes de mejora continua. Es un cargo que existe tanto en instituciones privadas como en el sector público.</p>
+    <div class="role-tags">
+      <span class="tag">Clínicas y hospitales</span>
+      <span class="tag">Sin atención de pacientes</span>
+      <span class="tag">Gestión de procesos</span>
+    </div>
+    <div class="role-key"><strong>¿Quién puede postular?</strong> Enfermero/a, Matrón/a, Tecnólogo/a Médico con experiencia clínica. Si has participado en procesos de acreditación en tu lugar de trabajo, ya tienes la base.</div>
+  </div>
+
+  <div class="role-card">
+    <div class="role-header">
+      <div class="role-number">16</div>
+      <div class="role-title-block">
+        <div class="role-title">Profesional en Informática Clínica</div>
+        <div class="role-subtitle">También publicado como: Analista de Sistemas Clínicos, Implementador de Ficha Clínica Electrónica</div>
+      </div>
+      <div class="role-salary">
+        <span class="salary-label">Sueldo referencial</span>
+        <span class="salary-amount">$1.8M–$3M CLP</span>
+      </div>
+    </div>
+    <p class="role-desc">Lidera la implementación y uso de sistemas de ficha clínica electrónica (FCE) en hospitales y clínicas. Capacita al personal, traduce las necesidades clínicas al equipo de TI y resuelve problemas del sistema. Con la digitalización obligatoria del sistema de salud chileno, este cargo tiene alta demanda y crecerá aún más en los próximos años.</p>
+    <div class="role-tags">
+      <span class="tag">Digitalización en salud</span>
+      <span class="tag">Alta demanda creciente</span>
+      <span class="tag">Proyectos</span>
+    </div>
+    <div class="role-key"><strong>¿Quién puede postular?</strong> Enfermero/a, Matrón/a, TM con afinidad por la tecnología. Un diplomado en Informática en Salud (disponible en U. de Chile, U. Mayor y otras) potencia el perfil.</div>
+  </div>
+
+  <!-- ======================== -->
+  <!-- CATEGORÍA 5: CONSULTORÍA Y MARKET ACCESS -->
+  <!-- ======================== -->
+  <div class="category-header">
+    <div class="category-icon">📊</div>
+    <div>
+      <h2>Consultoría, Market Access y Gestión en Salud</h2>
+      <p>Consultoras de salud, el MINSAL, FONASA, la Superintendencia de Salud y organismos internacionales como OPS/OMS necesitan profesionales clínicos para diseñar políticas, analizar datos y apoyar estrategias de acceso al sistema de salud.</p>
+    </div>
+  </div>
+
+  <div class="role-card">
+    <div class="role-header">
+      <div class="role-number">17</div>
+      <div class="role-title-block">
+        <div class="role-title">Analista de Acceso al Mercado en Salud</div>
+        <div class="role-subtitle">También publicado como: Market Access Analyst, Analista de Acceso y Reembolso</div>
+      </div>
+      <div class="role-salary">
+        <span class="salary-label">Sueldo referencial</span>
+        <span class="salary-amount">$2M–$3.5M CLP</span>
+      </div>
+    </div>
+    <p class="role-desc">Trabaja para que un nuevo medicamento sea incluido en las coberturas GES, FONASA o Isapres. Prepara dossiers técnicos para el MINSAL, analiza datos de costo-efectividad y coordina con reguladores públicos. Cargo estratégico en laboratorios farmacéuticos. Muy bien remunerado y con poca oferta de candidatos calificados en Chile.</p>
+    <div class="role-tags">
+      <span class="tag">MINSAL y FONASA</span>
+      <span class="tag">Estratégico</span>
+      <span class="tag orange">Muy bien pagado</span>
+    </div>
+    <div class="role-key"><strong>¿Quién puede postular?</strong> Profesional de salud con buen manejo analítico y conocimiento del sistema de salud chileno. Un magíster en Gestión en Salud o Epidemiología es muy valorado.</div>
+  </div>
+
+  <div class="role-card">
+    <div class="role-header">
+      <div class="role-number">18</div>
+      <div class="role-title-block">
+        <div class="role-title">Consultor/a de Salud para Empresas</div>
+        <div class="role-subtitle">También publicado como: Consultor en Gestión Hospitalaria, Asesor Clínico</div>
+      </div>
+      <div class="role-salary">
+        <span class="salary-label">Sueldo referencial</span>
+        <span class="salary-amount">$1.8M–$3M CLP o honorarios</span>
+      </div>
+    </div>
+    <p class="role-desc">Asesora a clínicas, hospitales, empresas de salud o incluso isapres en mejorar sus procesos, reducir costos y aumentar la calidad. Trabajo por proyectos, con alta autonomía. Compatible con el inicio de negocio propio. Muchos profesionales de salud comienzan haciendo consultoría part-time mientras siguen trabajando.</p>
+    <div class="role-tags">
+      <span class="tag">Por proyectos</span>
+      <span class="tag">Alta autonomía</span>
+      <span class="tag">Negocio propio posible</span>
+    </div>
+    <div class="role-key"><strong>¿Quién puede postular?</strong> Profesional de salud con varios años de experiencia clínica o de gestión. La especialización en un área (pabellón, UPC, urgencias, matronería) es tu valor diferencial.</div>
+  </div>
+
+  <div class="role-card">
+    <div class="role-header">
+      <div class="role-number">19</div>
+      <div class="role-title-block">
+        <div class="role-title">Profesional de Salud en el Sector Público no Clínico</div>
+        <div class="role-subtitle">También publicado como: Profesional SEREMI, Analista MINSAL, Gestor de Programas de Salud</div>
+      </div>
+      <div class="role-salary">
+        <span class="salary-label">Sueldo referencial</span>
+        <span class="salary-amount">$1.5M–$2.8M CLP</span>
+      </div>
+    </div>
+    <p class="role-desc">Trabaja en el MINSAL, FONASA, SEREMIS de Salud o Servicios de Salud en roles de planificación, diseño de programas, gestión de datos o asesoría técnica. Cargos publicados en el portal de Empleos Públicos (empleospublicos.cl). Sin atención directa de pacientes, con horario administrativo. Alta estabilidad y beneficios del sector público.</p>
+    <div class="role-tags">
+      <span class="tag">Sector público</span>
+      <span class="tag">Alta estabilidad</span>
+      <span class="tag">Sin pacientes</span>
+    </div>
+    <div class="role-key"><strong>¿Quién puede postular?</strong> Todos los profesionales de salud. Busca en empleospublicos.cl con palabras clave como "profesional salud", "SEREMI" o "MINSAL".</div>
+  </div>
+
+  <div class="role-card">
+    <div class="role-header">
+      <div class="role-number">20</div>
+      <div class="role-title-block">
+        <div class="role-title">Consultor/a de Salud para Organismos Internacionales</div>
+        <div class="role-subtitle">También publicado como: Consultor OPS/OMS, Especialista en Salud BID</div>
+      </div>
+      <div class="role-salary">
+        <span class="salary-label">Sueldo referencial</span>
+        <span class="salary-amount">USD $2.500–$6.000/mes</span>
+      </div>
+    </div>
+    <p class="role-desc">Trabaja con la OPS/OMS, UNICEF, BID o el Banco Mundial en proyectos de salud para Chile y Latinoamérica. Los contratos suelen ser por proyectos de 6 a 12 meses. Muchos son remotos y pagados en dólares. Los postulantes se buscan en los portales de cada organismo y en LinkedIn. Requiere inglés y posgrado.</p>
+    <div class="role-tags">
+      <span class="tag">Pagado en dólares</span>
+      <span class="tag">Remoto posible</span>
+      <span class="tag">Inglés necesario</span>
+      <span class="tag orange">Alta remuneración</span>
+    </div>
+    <div class="role-key"><strong>¿Quién puede postular?</strong> Profesional de salud con posgrado en salud pública, epidemiología o gestión en salud, con inglés intermedio-avanzado.</div>
+  </div>
+
+  <!-- ======================== -->
+  <!-- CATEGORÍA 6: CONTENIDO DIGITAL -->
+  <!-- ======================== -->
+  <div class="category-header">
+    <div class="category-icon">📱</div>
+    <div>
+      <h2>Contenido Digital en Salud</h2>
+      <p>Tu conocimiento clínico tiene un mercado creciente en el mundo digital. Laboratorios, isapres y clínicas buscan profesionales de salud que puedan comunicar con credibilidad en redes sociales y medios especializados.</p>
+    </div>
+  </div>
+
+  <div class="role-card">
+    <div class="role-header">
+      <div class="role-number">21</div>
+      <div class="role-title-block">
+        <div class="role-title">Creador/a de Contenido de Salud en Redes Sociales</div>
+        <div class="role-subtitle">También publicado como: Health Content Creator, Comunicador/a de Salud Digital</div>
+      </div>
+      <div class="role-salary">
+        <span class="salary-label">Ingreso referencial</span>
+        <span class="salary-amount">$500K–$3M+ CLP</span>
+      </div>
+    </div>
+    <p class="role-desc">Crea videos, publicaciones y contenido educativo de salud para TikTok, Instagram, YouTube o LinkedIn. Puede ser de forma independiente (construyendo tu propia audiencia) o contratado por laboratorios, isapres y clínicas para crear contenido de marca. Es un mercado que explotó en Chile post pandemia y sigue creciendo.</p>
+    <div class="role-tags">
+      <span class="tag">Desde casa</span>
+      <span class="tag">TikTok e Instagram</span>
+      <span class="tag">Escalable</span>
+      <span class="tag orange">Mercado en explosión</span>
+    </div>
+    <div class="role-key"><strong>¿Quién puede postular?</strong> Cualquier profesional de salud con ganas de comunicar en lenguaje simple. No necesitas ser influencer — necesitas ser auténtico y consistente.</div>
+  </div>
+
+  <div class="role-card">
+    <div class="role-header">
+      <div class="role-number">22</div>
+      <div class="role-title-block">
+        <div class="role-title">Redactor/a de Contenido Médico</div>
+        <div class="role-subtitle">También publicado como: Medical Writer, Redactor Científico, Content Writer Salud</div>
+      </div>
+      <div class="role-salary">
+        <span class="salary-label">Sueldo referencial</span>
+        <span class="salary-amount">$1.2M–$2.5M CLP o freelance</span>
+      </div>
+    </div>
+    <p class="role-desc">Redacta contenido técnico y científico para laboratorios, isapres, clínicas y medios de salud: artículos, guías clínicas, materiales educativos para médicos, contenido para sitios web médicos. Compatible con trabajo remoto y freelance para empresas internacionales en español o inglés. Aparece en plataformas freelance como Workana o Upwork.</p>
+    <div class="role-tags">
+      <span class="tag">Remoto posible</span>
+      <span class="tag">Freelance posible</span>
+      <span class="tag">Inglés suma puntos</span>
+    </div>
+    <div class="role-key"><strong>¿Quién puede postular?</strong> Cualquier profesional de salud con buena redacción. Un curso corto de Medical Writing es el primer paso — varios disponibles en Coursera.</div>
+  </div>
+
+  <!-- TIPS -->
+  <div class="tips-box">
+    <h3>🎯 Tienes la lista. ¿Ahora qué?</h3>
+    <div class="tip-item"><div class="tip-num">1</div><div>Identifica <strong>2 o 3 cargos</strong> de esta lista que te hagan sentido con tu perfil actual. No busques el perfecto — busca el primero.</div></div>
+    <div class="tip-item"><div class="tip-num">2</div><div>Entra a LinkedIn Chile y busca esos cargos ahora mismo. Revisa los perfiles de personas que ya los ejercen: ¿de dónde vienen? ¿cómo llegaron ahí?</div></div>
+    <div class="tip-item"><div class="tip-num">3</div><div><strong>Actualiza tu perfil de LinkedIn</strong> para mostrar las habilidades transferibles que ya tienes. No necesitas un nuevo título — necesitas mostrar diferente lo que ya sabes.</div></div>
+    <div class="tip-item"><div class="tip-num">4</div><div>Busca en <strong>Trabajando.cl, Laborum.cl, Bumeran.cl y LinkedIn Jobs</strong> con el nombre exacto del cargo como aparece en esta guía. Postula aunque no cumplas el 100% de los requisitos.</div></div>
+    <div class="tip-item"><div class="tip-num">5</div><div>Si quieres ir más rápido con acompañamiento personalizado, tengo un programa de 6 semanas diseñado para esto — te cuento abajo.</div></div>
+  </div>
+
+  <!-- CTA FINAL -->
+  <div class="cta-box">
+    <h2>¿Quieres que te <span>acompañe</span> en este camino?</h2>
+    <p>Si esta guía te abrió los ojos, imagina lo que podemos lograr juntos en 6 semanas trabajando tu caso específico. Ayudo a enfermeros, matrones, kinesiólogos y otros profesionales de salud en Chile a encontrar trabajo fuera del hospital — sin perder tiempo y sin vueltas.</p>
+    <a href="https://wa.me/56998013794?text=Hola%20Samir%2C%20le%C3%AD%20la%20gu%C3%ADa%20y%20quiero%20saber%20m%C3%A1s%20sobre%20el%20programa%20Transici%C3%B3n%20Salud" class="cta-button">Habla conmigo por WhatsApp →</a>
+    <p class="cta-contact">O escríbeme directo: <span>+56 9 9801 3794</span></p>
+  </div>
+
+</div>
+</body>
+</html>
